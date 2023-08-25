@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "rubik-light";
+  src: url(../assets/fonts/Rubik-Light.ttf);
+}
+@font-face {
+  font-family: "rubik-medium";
+  src: url(../assets/fonts/Rubik-Medium.ttf);
+}
+@font-face {
+  font-family: "rubik-regular";
+  src: url(../assets/fonts/Rubik-Regular.ttf);
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: auto;
+  background-color: var(--background);
+  color: white;
+  font-size: 18px;
+  font-family: "rubik-regular";
+}
+span {
+  color: var(--pale-blue);
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "user work play study"
+    "user exercise social self-care";
+  width: 900px;
+  height: 520px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.menu {
+  border-radius: 15px;
+  background-color: var(--dark-blue);
+  overflow: hidden;
+  grid-area: user;
+}
+.menu h1 {
+  font-family: "rubik-light";
+}
+.user {
+  height: 400px;
+  background-color: var(--blue);
+  border-radius: 15px;
+  padding: 20px;
+}
+.user-img img {
+  width: 80px;
+  height: 80px;
+  margin-top: 20px;
+}
+.user-info {
+  margin-top: 60px;
+}
+.menu-ul {
+  padding: 20px;
+}
+li {
+  padding: 5px 0px 5px 0px;
+  color: var(--desaturated-blue);
+}
+li:hover {
+  color: white;
+  cursor: pointer;
+}
+.work,
+.play,
+.study,
+.exercise,
+.social,
+.self-care {
+  height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.work-img,
+.play-img,
+.study-img,
+.exercise-img,
+.social-img,
+.self-care-img {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 0;
+  margin-top: -10px;
+}
+.play-menu,
+.work-menu,
+.study-menu,
+.exercise-menu,
+.social-menu,
+.self-care-menu {
+  display: flex;
+  justify-content: space-between;
+}
+.work-stats,
+.play-stats,
+.study-stats,
+.exercise-stats,
+.social-stats,
+.self-care-stats {
+  height: 250px;
+  background-color: var(--dark-blue);
+  position: relative;
+  border-radius: 15px;
+  padding: 20px;
+  z-index: 1;
+}
+.hours {
+  margin-top: 40px;
+  font-size: 25px;
+  font-family: "rubik-light";
+}
+.hours span {
+  font-size: 15px;
+}
+.work-stats:hover,
+.play-stats:hover,
+.study-stats:hover,
+.play-stats:hover,
+.exercise-stats:hover,
+.social-stats:hover,
+.self-care-stats:hover {
+  background-color: var(--desaturated-blue);
+  cursor: pointer;
+}
+.play-stats,
+.study-stats {
+  margin-top: -30px;
+}
+.work {
+  background-color: var(--work);
+  grid-area: work;
+}
+.play {
+  background-color: var(--play);
+  grid-area: play;
+}
+.work-stats {
+  margin-top: -30px;
+}
+.study {
+  background-color: var(--study);
+  grid-area: study;
+}
+.exercise {
+  background-color: var(--exercise);
+  grid-area: exercise;
+}
+.social {
+  background-color: var(--social);
+  grid-area: social;
+}
+.social-stats {
+  margin-top: -45px;
+}
+.self-care {
+  background-color: var(--self-care);
+  grid-area: self-care;
+}
+.self-care-stats {
+  margin-top: -10px;
+}
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    display: grid;
+    width: fit-content;
+    gap: 20px;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(7, 50%);
+    grid-template-areas:
+      "user"
+      "work"
+      "play"
+      "study"
+      "exercise"
+      "social"
+      "self-care";
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+  }
+  .menu-ul {
+    display: flex;
+    gap: 30px;
+  }
+}
