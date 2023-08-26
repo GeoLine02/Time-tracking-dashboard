@@ -6,79 +6,75 @@ const handleData = async () => {
     const monthly = document.getElementById("monthly");
     const weekly = document.getElementById("weekly");
 
-    function dailyCrHours() {
-      const h1Arrays = [];
-      h1Arrays.push(document.getElementById("workCrHours"));
-      h1Arrays.push(document.getElementById("playCrHours"));
-      h1Arrays.push(document.getElementById("studyCrHours"));
-      h1Arrays.push(document.getElementById("exerciseCrHours"));
-      h1Arrays.push(document.getElementById("socialCrHours"));
-      h1Arrays.push(document.getElementById("selfCareCrHours"));
+    // arrays
 
+    const h1Arrays = [];
+    h1Arrays.push(document.getElementById("workCrHours"));
+    h1Arrays.push(document.getElementById("playCrHours"));
+    h1Arrays.push(document.getElementById("studyCrHours"));
+    h1Arrays.push(document.getElementById("exerciseCrHours"));
+    h1Arrays.push(document.getElementById("socialCrHours"));
+    h1Arrays.push(document.getElementById("selfCareCrHours"));
+
+    const spanArray = [];
+
+    spanArray.push(document.getElementById("workPrvHours"));
+    spanArray.push(document.getElementById("playPrvHours"));
+    spanArray.push(document.getElementById("studyPrvHours"));
+    spanArray.push(document.getElementById("exercisePrvHours"));
+    spanArray.push(document.getElementById("socialPrvHours"));
+    spanArray.push(document.getElementById("selfCarePrvHours"));
+
+    // functions
+
+    function dailyHours() {
       const dailyCrHoursArray = [];
-
-      for (let i = 0; i < data.length; i++) {
-        dailyCrHoursArray.push(data[i].timeframes.daily.current);
-      }
-
-      for (let i = 0; i < h1Arrays.length; i++) {
-        h1Arrays[i].innerHTML = dailyCrHoursArray[i] + `hrs`;
-      }
-    }
-    dailyCrHours();
-
-    function dailyPrvHours() {
-      const spanArray = [];
-
-      spanArray.push(document.getElementById("workPrvHours"));
-      spanArray.push(document.getElementById("playPrvHours"));
-      spanArray.push(document.getElementById("studyPrvHours"));
-      spanArray.push(document.getElementById("exercisePrvHours"));
-      spanArray.push(document.getElementById("socialPrvHours"));
-      spanArray.push(document.getElementById("selfCarePrvHours"));
-
-      // dialy previous hours
-
       const dailyPrvHoursArray = [];
 
       for (let i = 0; i < data.length; i++) {
+        dailyCrHoursArray.push(data[i].timeframes.daily.current);
+        h1Arrays[i].innerHTML = dailyCrHoursArray[i] + `hrs`;
         dailyPrvHoursArray.push(data[i].timeframes.daily.previous);
-      }
-      console.log(dailyPrvHoursArray);
-
-      for (let i = 0; i < spanArray.length; i++) {
         spanArray[i].innerHTML = `Last Day - ` + dailyPrvHoursArray[i] + `hrs`;
       }
     }
-    dailyPrvHours();
+    dailyHours();
 
-    function weeklyCrHours() {
-      const h1Arrays = [];
-      h1Arrays.push(document.getElementById("workCrHours"));
-      h1Arrays.push(document.getElementById("playCrHours"));
-      h1Arrays.push(document.getElementById("studyCrHours"));
-      h1Arrays.push(document.getElementById("exerciseCrHours"));
-      h1Arrays.push(document.getElementById("socialCrHours"));
-      h1Arrays.push(document.getElementById("selfCareCrHours"));
-
+    function weeklyHours() {
       const weeklyCrHoursArraay = [];
+      const weeklyPrvHoursArray = [];
       for (let i = 0; i < data.length; i++) {
         weeklyCrHoursArraay.push(data[i].timeframes.weekly.current);
-      }
-      for (let i = 0; i < h1Arrays.length; i++) {
         h1Arrays[i].innerHTML = weeklyCrHoursArraay[i] + `hrs`;
+        weeklyPrvHoursArray.push(data[i].timeframes.weekly.previous);
+        spanArray[i].innerHTML =
+          `Last Week - ` + weeklyPrvHoursArray[i] + `hrs`;
+      }
+    }
+
+    function monthlyHours() {
+      const monthlyCrHoursArray = [];
+      const monthlyPrvHoursArray = [];
+      for (let i = 0; i < data.length; i++) {
+        monthlyCrHoursArray.push(data[i].timeframes.monthly.current);
+        h1Arrays[i].innerHTML = monthlyCrHoursArray[i] + `hrs`;
+        monthlyPrvHoursArray.push(data[i].timeframes.monthly.previous);
+        spanArray[i].innerHTML =
+          `Last Month - ` + monthlyPrvHoursArray[i] + `hrs`;
       }
     }
 
     // // eventListeners
     daily.addEventListener("click", () => {
-      dailyCrHours();
-      dailyPrvHours();
+      dailyHours();
     });
     weekly.addEventListener("click", () => {
-      weeklyCrHours();
-      // functions
+      weeklyHours();
     });
+    monthly.addEventListener("click", () => {
+      monthlyHours();
+    });
+    return;
   } catch (error) {
     console.log(error);
   }

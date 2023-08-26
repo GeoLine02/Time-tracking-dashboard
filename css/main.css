@@ -84,7 +84,7 @@ li:hover {
 .exercise,
 .social,
 .self-care {
-  height: 250px;
+  height: fit-content;
   border-radius: 15px;
   overflow: hidden;
 }
@@ -115,10 +115,9 @@ li:hover {
 .exercise-stats,
 .social-stats,
 .self-care-stats {
-  height: 250px;
   background-color: var(--dark-blue);
   position: relative;
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
   padding: 20px;
   z-index: 1;
 }
@@ -181,9 +180,8 @@ li:hover {
   .wrapper {
     display: grid;
     width: fit-content;
-    gap: 20px;
     grid-template-columns: 100%;
-    grid-template-rows: repeat(7, 50%);
+    grid-template-rows: repeat(7, 40%);
     grid-template-areas:
       "user"
       "work"
@@ -195,13 +193,23 @@ li:hover {
   }
   .user {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 20px;
     width: fit-content;
     height: fit-content;
+    margin-top: ;
+  }
+  .user-info {
+    margin-top: 30px;
   }
   .menu-ul {
     display: flex;
+    justify-content: center;
     gap: 30px;
+  }
+  .hours {
+    display: flex;
+    align-items: last baseline;
+    justify-content: space-between;
+    margin-top: 20px;
   }
 }
